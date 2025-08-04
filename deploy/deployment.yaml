@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: socleantissue-website
+  labels:
+    app: socleantissue-website
+spec:
+  selector:
+    app: socleantissue-website
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      name: http-traffic
+      port: 3000
+      targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socleantissue-website
+spec:
+  selector:
+    matchLabels:
+      app: socleantissue-website
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: socleantissue-website
+    spec:
+      containers:
+        - name: socleantissue-website
+          image: registry.bn.co.th/socleantissue-website:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "50m"
