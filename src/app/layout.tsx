@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SoClean Tissue",
-  description: "SoClean Tissue ทิชชู่โซคลีน",
+  title: "SoClean Tissue - Coming Soon",
+  description: "Our website is coming soon!",
 };
 
 export default function RootLayout({
