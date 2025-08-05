@@ -27,8 +27,8 @@ metadata:
 spec:
   secretName: cloudflare-tls
   dnsNames:
-    - socleantissue.co.th
-    - www.socleantissue.co.th
+    - socleantissue.com
+    - www.socleantissue.com
   duration: 168h
   renewBefore: 24h
   issuerRef:
@@ -48,13 +48,14 @@ metadata:
     cert-manager.io/issuer-kind: OriginIssuer
     cert-manager.io/issuer-group: cert-manager.k8s.cloudflare.com
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
-      - socleantissue.co.th
-      - www.socleantissue.co.th
+      - socleantissue.com
+      - www.socleantissue.com
       secretName: cloudflare-tls
   rules:
-    - host: socleantissue.co.th
+    - host: socleantissue.com
       http:
         paths:
           - pathType: Prefix
@@ -64,7 +65,7 @@ spec:
                 name: socleantissue-website
                 port:
                   number: 3000
-    - host: www.socleantissue.co.th
+    - host: www.socleantissue.com
       http:
         paths:
           - pathType: Prefix
